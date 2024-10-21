@@ -17,7 +17,7 @@ pipeline {
             steps{
                 script{
                     dir('webProject'){
-                        sh "mvn clean package &"
+                        sh "mvn clean package"
                     }
                 }
             

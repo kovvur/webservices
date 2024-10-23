@@ -13,21 +13,13 @@ pipeline {
             }
         }
 
-        stage('Build code'){
-            steps{
-                script{
-                    dir('webProject'){
-                        sh "mvn clean package"
-                    }
-                }
-            
-            }
-        }
-
+        
         stage('Build Docker image'){
             steps{
                 script {
-                    sh "docker build -t ${DOCKER_IMAGE} ." 
+                    dir('webProject'){
+                        sh "docker build -t ${DOCKER_IMAGE} ." 
+                    }
                 }
             }
         }
